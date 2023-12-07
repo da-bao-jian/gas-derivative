@@ -1,22 +1,29 @@
 # Qi Protocol - A Blockspace(Blobspace) Derivatives Market
 
+# Qi Protocol - A Blockspace(Blobspace) Market
+
 ### Intro
 
-On Ethereum, blocks constitute the foundational settlement layer for state transitions. In the pre-Proof of Stake (PoS) era, miners, and in the post-PoS era, validators, are responsible for supplying blockspace - a critical resource for on-chain computations. An increase in on-chain activities invariably escalates network fees, thereby fostering heightened competition for blockspace. This competitive landscape transforms blockspace into a coveted commodity, indispensable to Layer 2 solutions, Maximal Extractable Value (MEV) searchers, bridges, and wallets, rendering it an ideal candidate for financialization. 
+On Ethereum, blocks constitute the foundational settlement layer for state transitions. In the pre-Proof of Stake (PoS) era, miners, and in the post-PoS era, validators, are responsible for supplying blockspace, a critical resource necessitated by transactional activities on the blockchain. An increase in on-chain activities invariably escalates network fees, thereby fostering heightened competition for blockspace. This competitive landscape transforms blockspace into a coveted commodity, indispensable to Layer 2 solutions, Maximal Extractable Value (MEV) searchers, and (Account Abstract smart)wallets, rendering it an ideal candidate for financialization—a process akin to the evolution observed in traditional commodity markets. 
 
-Commodity derivatives dates back to the [Dojima Rice Exchange](https://en.wikipedia.org/wiki/D%C5%8Djima_Rice_Exchange). Rice merchants engaged in the trade of "rice tickets," which represented rights to rice stored in their warehouses, rather than dealing with the physical commodity itself. These rice tickets was foundational to the development of various kinds of derivative contracts, including futures, forwards, and options. This historical lineage of financial innovation is further exemplified by the creation of agricultural futures by the Chicago Board of Trade, which contributed to efficient risk management and scalability in operations for commodity trading. 
+Historically, commodity derivatives trading of commodity dates back to the [Dojima Rice Exchange](https://en.wikipedia.org/wiki/D%C5%8Djima_Rice_Exchange), where derivative contracts like forwards and options originated. Rice merchants engaged in the trade of "rice tickets," which represented entitlements to rice stored in their warehouses, rather than dealing with the physical commodity itself. These rice tickets formed the foundation for the development of various derivative contracts, including short sales, forwards, and options, which are prevalent in modern trading. This historical lineage of financial innovation is further exemplified by the establishment of agricultural futures by the Chicago Board of Trade, which significantly contributed to efficient risk management and scalability in operations. The late 20th-century creation of the Volatility Index (VIX) market, despite the non-tradeable nature of the VIX itself, presents a parallel evolution. The thriving derivatives market of the VIX closely mirrors the Ethereum fee market, particularly in the context of the underlying asset—gas—not being directly tradable. The implementation of [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) marked a pivotal transition for Ethereum, introducing a structured fee market and thereby facilitating the creation of a standardized gas reference price, which is imperative for the settlement of a variety of derivative products.
 
-Looking ahead, the Ethereum blockspace market, having drawn lessons from these historical developments, stands on the cusp of a similar evolutionary trajectory. The Merge and the anticipated [EIP-4844](https://www.eip4844.com/) are set to redefine this landscape, potentially drawing parallels with the traditional oil and gas markets where aggregated benchmarks have historically enabled wider market participation and enhanced efficiency in price discovery. In a manner akin to the oil and [VIX](https://www.cboe.com/tradable_products/vix/), the burgeoning Ethereum blockspace market is poised for substantial growth through the incorporation of derivative trading, which promises to refine price discovery mechanisms and offer sophisticated tools for the management of digital asset portfolios.
+Looking ahead, the Ethereum blockspace market, having drawn lessons from these historical developments, stands on the cusp of a similar evolutionary trajectory. The Merge and the anticipated [EIP-4844](https://www.eip4844.com/) are set to redefine this landscape, potentially drawing parallels with the traditional oil and natural gas markets where aggregated benchmarks have historically enabled wider market participation and enhanced efficiency in price discovery. In a manner akin to the oil and VIX markets, the burgeoning Ethereum blockspace market is poised for substantial growth through the incorporation of derivative trading, which promises to refine price discovery mechanisms and offer sophisticated tools for the management of digital asset portfolios.
 
 
 ## Dojima - A Physically-settled Blockspace Futures Market for Blockspace
 
-### Overview
+![sec03_img01](https://hackmd.io/_uploads/B1Rj3G1Ia.jpg)<em>The offices of Dojima Rice Exchange built over the Dojima river: upper right depicts a scene where a flag is used to disseminate the price of rice. Painting by Yoshimitsu (1850-1891) </em>
 
+### Overview
 Physical settlement under the lens of traditional commodity trading means the actual delivery of the underlying asset upon the expiration of the derivative contract. In this arrangement, the seller of the derivative is obligated to provide the physical commodity, such as crude oil, wheat, or gold, to the buyer. Conversely, the buyer is required to accept and take possession of the commodity. This exchange typically occurs at a predetermined location and involves the transfer of the physical goods. Physical settlement contrasts with cash settlement, where no actual commodity changes hands; instead, the difference between the market price and the contract price is exchanged in cash. In physical settlement, the logistics, storage, and transportation of the commodity play a crucial role and often significantly influence the contract terms and conditions, making it a more complex and operationally intensive process.
 
 Looking at the transaction pipeline of Ethereum, especially in the context of physical delivery of blockspace, validators emerge as the pivotal participants capable of ensuring such delivery. This is because validators have the final say in determining the contents of the canonical block, effectively controlling the inclusion of transactions within the Ethereum blockchain. In this setup, validators can be likened to sellers in a traditional commodity market, with blockspace serving as the asset being traded.
+:::info
+Note: we are well aware of the construct of PBS. Validators, if so choose , could still propose without MEV-boost; even if when MEV-Boost is chosen, validators retain the ultimate decision-making power regarding which block to select. 
 
+Additionally, we hold the view that a validator's choice of architecture is predominantly profit driven. This is evident in the rate of adoption for MEV-Boost among validators. Should there exist a design that can yield greater revenue, whether through MEV, priority fee, or a combination of both, provided with reasonable ease of use, it is likely to become the preferred architecture.
+:::
 Drawing a parallel to the physical delivery of commodities, the validator assumes the role of the seller, the blockspace represents the tangible asset, and the buyer is the entity seeking transaction inclusion within a specific block. This dynamic closely mirrors traditional commodity transactions, where a buyer and seller agree upon the delivery of a physical asset at a future date. In the Ethereum context, the "expiration date" of such a contract would correspond to a specific block number, which is the point at which the buyer desires their transaction to be included.
 
 This scenario implies that a buyer, seeking transaction inclusion, enters into an agreement with a validator, where the block number functions as a predetermined deadline for the "delivery" of blockspace. Just as in commodity markets where the delivery date is critical, in Ethereum's blockspace market, the block number signifies the moment of fulfillment of the contract, aligning the concept of physical delivery in traditional commodity trading with the digital realm of blockchain transaction inclusion.
@@ -162,11 +169,11 @@ For each $i$ and $t$,
     
     The lifecycle of a transaction on an optimistic roll-up involves several key steps:
 
-    **Initiation**: A user initiates a transaction through MetaMask. MetaMask formats and signs this transaction like a regular Ethereum transaction. Then, MetaMask sends the transaction to the optimistic rollup's RPC endpoint. This endpoint is a rollup node that routes the transaction to the Sequencer.
+    **Initiation**: A user initiates a transaction through wallets such like MetaMask. MetaMask formats and signs this transaction like a regular Ethereum transaction. Then, MetaMask sends the transaction to the optimistic rollup's RPC endpoint. This endpoint is a rollup node that routes the transaction to the Sequencer.
 
-    **Sequencing**: The Sequencer receives the transaction, validates it (including signature checks), and orders it among other received transactions. 
+    **Sequencing**: The Sequencer receives the transaction, validates it, and orders it among other received transactions. 
 
-    **Batch Posting**: Periodically (about every 5 minutes), the Sequencer posts batches of transactions to the Ethereum contract. This action canonicalizes the transactions and their order, implicitly determining the Layer 2 (L2) state. Anyone executing these transactions in the specified order would reach the same L2 state.
+    **Batch Posting**: Periodically (normally less than 3 minutes), the Sequencer posts batches of transactions to the Ethereum contract. This action canonicalizes the transactions and their order, implicitly determining the Layer 2 (L2) state. Anyone executing these transactions in the specified order would reach the same L2 state.
 
     **State Validation**: L2 validators read the posted transactions and execute them to update to the new L2 state. They then make an on-chain assertion about the chain's latest state using the Merkle Root of this new state. 
 
@@ -213,9 +220,9 @@ For each $i$ and $t$,
     
     During high-demand periods for blobs, L2s may find themselves competing for the limited availability of 6 blobs per block. If all available blobs are used in a previous block, the cost for next block's blobs is set to [rise exponentially](https://eips.ethereum.org/EIPS/eip-4844#blob-gasprice-update-rule). Blobs will become increasingly scarse if some L2s decide to intentionally buy up the blobs to cause delays in other L2s and jack up the price of blobs in the next blocks . Situations like these force roll-ups, especially those beyond the first 6, to incur higher costs to maintain their finality rates. The longer a rollup waits to make its commitment, the more inelastic its demand for blobspace becomes, as it faces escalating costs. There are leeways 
 
-    Blobspace futures offer a solution to this challenge. By securing blobspace up to 64 blocks in advance, rollups can effectively sidestep the competitive and fluctuating market dynamics similar to a Priority Gas Auction (PGA). 
+    Blobspace futures offer a solution to this challenge. By securing blobspace up to 64 blocks in advance, rollups can effectively sidestep the competitive and fluctuating market dynamics similar to a [Priority Gas Auction (PGA)](https://www.mev.wiki/terms-and-concepts/priority-gas-auctions). 
     
-    The competition of blobs could become ultra competitive as more use cases of blobs are explored. One of the non-conventional use case of blobs are [on-chain NFTs](https://hackmd.io/@snakajima/HJva6n-Jj) that only need to exsit on-chain momentarily, such like [rental NFTs](https://eips.ethereum.org/EIPS/eip-4907).  
+    The competition of blobs could become ultra competitive as more use cases of blobs are explored. One of the non-conventional use case of blobs are [on-chain NFTs](https://hackmd.io/@snakajima/HJva6n-Jj) that only need to exsit on-chain momentarily, such like [rental NFTs](https://eips.ethereum.org/EIPS/eip-4907) or [ticket NFT](https://oveit.com/nft-tickets/). By the end of the day, people will try to put data on-chain if the cost is low enough. 
     
     In the medium to long term, we expect that a secondary market for blobspace futures may emerge. This market would likely involve sophisticated market makers acquiring blobspace futures from validators and subsequently selling them to buyers. The rationale for such a market stems from the observation that not every rollup fully utilizes the space provided by a single blob. Economically, it is practical to allow multiple rollups to share a single blob. Market makers that could partition the blob and sell the blobspace to multiple parties could charge a premium for service. The pricing of these "sharded" blobs, requires a high degree of financial acumen. Therefore, this activity is best conducted by entities that specialize in financial engeineering and possess the necessary expertise to navigate such a market effectively. For more economical analysis of blob and cost sharing strategies, please refer to [*EIP-4844 Economics and Rollup Strategies*](https://arxiv.org/abs/2310.01155).
 
@@ -247,7 +254,7 @@ For each $i$ and $t$,
 
     Following the establishment of this contract, the Scheduler generates NFTs that represent reservations for each future block segment on the consumer chain. These reservation tokens, encompassing all participating chains, are then auctioned in batches at regular intervals.
 
-    The tokenized reservations have the option to be traded on secondary markets. This trading can continue until the reservation is redeemed. Redemption involves presenting the token to the designated validator on the partner chain, along with the specific transaction sequence that needs to be executed.
+    The tokenized reservations have the option to be traded on secondary markets. Trading can continue until the reservation is redeemed. Redemption involves presenting the token to the designated validator on the partner chain, along with the specific transaction sequence that needs to be executed.
 
     After the successful execution of a block, a portion of the revenue generated from the Scheduler auction is remitted back to the partner chain. This revenue sharing is a key aspect of the system, creating a mutually beneficial arrangement between the participating chains.
     
@@ -317,7 +324,7 @@ A well-structured futures trading market demands a clear framework that delineat
         In the context of blockspace futures, validators have natural margins since every validator is required to stake 32 ETH. However, the stakers slashing mechanism does not take blockspace futures into consideration. To re-purpose a validator's stake for margin requirement, Dojima will leverage [EigenLayer](https://docs.eigenlayer.xyz/overview/readme/whitepaper) to allow validators re-staking their stakes as futures' margins. In events of non-fullfillment of buyers' transaction, a validator would be slashed. In other words, if a validator wishes to opt into blockspace futures selling, he/she needs to re-stake on EigenLayer first.
         
 ### Protocol Description
-*Note: This section is not meant to be read as technical specs. The technical details are intentionally left out for a seperate document* 
+**Note: This section is not meant to be read as technical specs. The technical details are intentionally left out* 
 
 #### Basics
 ![bidding](https://hackmd.io/_uploads/SJw4djA4T.png)<em>Blockspace Market Timeline</em>
@@ -336,7 +343,7 @@ In terms of how buying and selling of blockspace are processed, how the informat
     
     On the smart contract, the function taking the bid should evaluate the bid according to a seller specified bid evaluation metric and if succeeds, update the mapping of the seller inclusion list. 
     
-    If the block a validator will propose is `block n`, then the last block a validator will accept bid is `block n-1`. At `block n`, the block has to include a transaction calling the `merklize` function, which merklize of all of the hashed `Bids` belonged to a validator in the `inclusionList` and update a mapping, `merkleRootList`, which will be used for fraud proof later. 
+    If the block a validator will propose is `block n`, then the last block a validator will accept bid is `block n-1`. At `block n`, the block has to include a transaction calling the `merklize` function, which merklize of all of the hashed `Bids` belonged to a validator in the `inclusionList`([same name but should not be confused with the inclusion list in the context of censorship resistance](https://notes.ethereum.org/@fradamt/forward-inclusion-lists)) and update a mapping, `merkleRootList`, which will be used for fraud proof later. 
     
     For reference, a rough smart contract implementation would look like this:
     ```solidity
@@ -420,7 +427,7 @@ In terms of how buying and selling of blockspace are processed, how the informat
      
     Due to relay's unique ecological niche, they could facilitate bid expression from the users and enforce validator commitments, most importantly, for profits especially given that relays are operating at a loss currently. 
     
-    Relays can function as a middleware between validators and blockspace (or blobspace) buyers, streamlining the bid submission process. In this model, rather than buyers submitting bids directly to validators and committing them to a smart contract, a specialized relay aggregates these bids for the validators. Upon receiving a new bid, the relay forwards it to the validator for consideration. If the validator opts to accept the bid, they would need to
+    Relays can function as a middleware between validators and blockspace (or blobspace) buyers, streamlining the bid submission process. In this model, rather than buyers submitting bids directly to validators and committing them to a smart contract, a specialized relay aggregates these bids for the validators. Upon receiving a new bid, the relay forwards it to the validator for consideration. If the validator opts to accept the bid, they would
     1. Send a confirmation message back to the relay, signaling their commitment to include the bid.
     2. Store the buyer's transaction locally.
     ![relay](https://hackmd.io/_uploads/rkcASe24a.png)<em>Relay as Middleware for bid aggregation</em>
@@ -457,11 +464,12 @@ In terms of how buying and selling of blockspace are processed, how the informat
 
     Drawing an analogy, the role of the relay could potentially be substituted by a special purpose rollup. In such a scenario, once a validator confirms a buyer's bid, the transactions are sequentially arranged in a First-In-First-Out (FIFO) order by the sequencer. The sequencer would then commit a Merkle root and transactions to L1 like an optmistic rollup would. The difference is the Merkle root serves one extra purpose: ensuring the validator's inclusion of the buyers' transactions. 
     
-    To send the bid, the buyer first submits their bid to the validator; upon acceptance, the bid confirmation is forward to the sequencer. Given the rollup's minimalistic nature, a [based rollup](https://ethresear.ch/t/based-rollups-superpowers-from-l1-sequencing/15016) design is particularly apt. Any re-staked validator engaged in selling blockspace futures might act as the transaction compressor, fetching transactions from dedicated mempool then forwarding transaction data and state root to a block builder or directly to the validator(if not  MEV-boost), thereby earning additional fees. 
+    To send the bid, the buyer first submits their bid to the validator; upon acceptance, the bid confirmation is forward to the sequencer. Given the rollup's minimalistic nature, a [based rollup](https://ethresear.ch/t/based-rollups-superpowers-from-l1-sequencing/15016) design is particularly apt. Any re-staked validator might act as the transaction compressor, fetching transactions from dedicated mempool then forwarding transaction data and state root to a block builder or directly to the validator(if not  MEV-boost), thereby earning additional fees. For data availability, [EigenDA](https://www.blog.eigenlayer.xyz/intro-to-eigenda-hyperscale-data-availability-for-rollups/) is a convinient choice. 
     
-    Alternatively, light weight rollup such as [Stackr](https://www.stackrlabs.xyz/) is also suitable for the job. 
+    Alternatively, light weight rollups such as [Stackr](https://www.stackrlabs.xyz/) are also suitable for the job. 
     
-    A more MEV coucious design could introduce further incentives for the sequencer, such as allowing the sequencer to order received bids. 
+    A more MEV coucious design could introduce further incentives for the sequencer, such as allowing the sequencer to order received bids arbitrarily.
+    
     The comprehensive design of such a rollup, however, encompasses complexities that extend beyond the scope of this document. 
 
 
@@ -471,12 +479,15 @@ To challenge a transaction inclusion, a challenger should
    - then, generate the merkle root by providing the same block number, with other relevant block info such like transaction index
    - if the merkle roots from step 1 and 2 are the same, challenge failed. Otherwise, challenge succeeds and the validator's [withdraw credential on Eigenlayer](https://docs.inceptionlrt.com/introduction/eigenlayer#slashing-on-eigenlayer) will be negatively affected. 
 
-In summary, the blockspace futures exchange process in Ethereum is structured around epochs, with validators selling blockspace credits, and state updates managed through a smart contract or an optimistic rollup. Transactions are included by validators directly or via relay-verified block builders, with a challenge mechanism in place to ensure the integrity of the transaction inclusion process.
-
+In summary, the blockspace futures exchange process in Ethereum is structured around epochs, with validators selling blockspace, and state updates managed through a smart contract or an optimistic rollup. Transactions are included by validators directly or via relay-verified block builders, with a challenge mechanism in place to ensure the integrity of the transaction inclusion process.
 
 
 
 ## GIX(Gas Index) Market - A Cash-settled Derivative Market for Ethereum Gas Fees
+
+![image](https://hackmd.io/_uploads/Synt6GyIp.png)<em>Men working the floor at the Chicago Board of Trade circa 1949. From ["Photos: After 167 years, Chicago Mercantile Exchange closes futures trading pits"](https://fortune.com/2015/07/06/chicago-mercantile-exchange-closes-futures-trading-pits/)</em>
+
+
 
 ### Cash-Settled Derivatives Market for Ethereum Gas
 
@@ -500,7 +511,9 @@ To reference the base fee and settle options, we'll use [Axiom](https://www.axio
 
 The calculation of the option strike price will be determined using the formula: " $Fee_T$ / $GAS$", where $T$ represend the period over which $Fee$ will be calculated. At the time of settlement, the payout will be calculated as the difference between the Current and Strike values of " $Fee_T$ / $GAS$", with an additional process of "truncation" applied, which will be explained in further detail later.
 
-The decision to compute the average base fee on an hourly basis, rather than using the actual gas fee (which would include the priority fee) for each block, is a strategic one aimed at mitigating the risks associated with potential collusion among validators. In practical scenarios, it's conceivable that validators could collude to manipulate gas prices. By averaging the gas fees over an extended period and focusing exclusively on the base fee (excluding the priority fee), the system increases both the difficulty and cost of such manipulation, while also enhancing the chances of detecting any collusive behavior. Further quantitative research is planned to fine-tune the reference rate's timeframe, striking an optimal balance between minimizing the risk of base fee manipulation and maintaining the tractability of the reference rate.
+The decision to take time based calculation over base fee, rather than using the actual base fee for each block, is a strategic one aimed at mitigating the risks associated with potential collusion among validators. In practical scenarios, it's conceivable that validators could collude to manipulate base fee. By taking a calculation of base fee over an extended period, the system increases both the cost of such manipulation. 
+
+Further quantitative research is planned to fine-tune the reference rate's timeframe, striking an optimal balance between minimizing the risk of base fee manipulation and maintaining the tractability of the reference rate.
 
 ### Base Currency
 *GAS* is an ERC-20 token that maintains a consistent peg to ETH at a index value $I$:
@@ -545,6 +558,8 @@ The GAS will largely based on the design of [Liquity](https://docs.liquity.org/)
 - Why T-Options?
 
     The volatility of base fees, which lack a corresponding real asset of equal value, can surge unexpectedly within a brief period. Consequently, if option sellers were required to deposit substantial collateral to cover potential high payouts, it would lead to inefficient capital usage, particularly in scenarios where gas fees skyrocket unexpectedly. By capping the maximum payout at $u−l$, t-options require significantly lower and more predictable collateral amounts. This approach focuses on the more likely outcomes or expected value ranges, enhancing capital efficiency. Notably, t-options can be adapted to function like classic options, as detailed in the following sections. 
+    ![basefee](https://hackmd.io/_uploads/SkCtdW0r6.png)<em>Base Fee from Nov 29 2023 to Dec 6 2023. From [Ultrasound Money](https://ultrasound.money/)</em>
+
     
 - Who Buy & Sell T-Options
 
@@ -1006,13 +1021,13 @@ The section discusses three types of exotic truncated options. These options all
 
 Our team has been exploring the potential of [Uniswap V4](https://github.com/Uniswap/v4-core) for developing specialized systems aimed at base fee trading.
 
-The primary issue with on-chain options is their low liquidity. Truncated options don't address this challenge. However, customized AMMs present a viable solution. Notably, [liquidity positions in Uniswap V3 act like perpetual options](https://lambert-guillaume.medium.com/how-to-create-a-perpetual-options-in-uniswap-v3-3c40007ccf1), a concept that can be used to engineer synthetic option-like returns. Protocols like [Panoptics](https://intro.panoptic.xyz/) are examples of its application.
+The primary issue with on-chain options is their low liquidity. Truncated options don't address this challenge. However, customized AMMs present a viable solution. Notably, [liquidity positions in Uniswap V3 act like perpetual options](https://lambert-guillaume.medium.com/how-to-create-a-perpetual-options-in-uniswap-v3-3c40007ccf1). This is a concept that could be used to engineer synthetic option-like returns. Protocols like [Panoptics](https://intro.panoptic.xyz/) are examples of its application.
 
-[Uniswap V4 Hooks](https://blog.uniswap.org/v4-twamm-hook) introduces greater versatility, allowing for the integration of custom swap and liquidity strategies, and even customized CFMMs.
+[Uniswap V4 Hooks](https://blog.uniswap.org/v4-twamm-hook) further introduces greater versatility, allowing for the integration of custom swap and liquidity strategies, and even customized CFMMs.
 
 Our research is currently focused on two primary directions:
 
-1. Utilizing hooks to vitual pool for GAS/ETH by amplifying the GAS price movements. Since GAS, being a Time-Weighted Average Price (TWAP) of base fees, doesn't precisely mirror base fee fluctuations, A virtual pool would use a scaling factor to magnify the price movement for swapping and LPing to closely track the base fee;
+1. Utilizing hooks to create a virtual pool for GAS/ETH by amplifying the GAS price movements. Since GAS, being a Time-Weighted Average Price (TWAP) of base fees, doesn't precisely mirror base fee fluctuations, A virtual pool would use a scaling factor to magnify the tick spacing for swapping and LPing to closely track the base fee;
 2. A custom CFMM on Uniswap V4 for base fee trading that allows close tracking of base fees, through `NoOp`. [An example Uniswap V4 Pool using the Constant Sum as the CFMM has been made](https://github.com/saucepoint?tab=repositories). 
 
 
